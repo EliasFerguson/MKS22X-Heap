@@ -16,7 +16,9 @@ public class MyHeap {
         else if (kids[1] > kids[0] && kids[1] > data[index]) {
           swap(index,  ((index * 2) + 2),data);
         }
+        else done = true;
       }
+      else done = true;
     }
   }
   private static void pushUp(int[] data, int index) {
