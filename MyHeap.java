@@ -22,7 +22,18 @@ public class MyHeap {
   public static void heapsort(int[] data) {
 
   }
-  
+  private static boolean hasChildL(int size, int idx) {
+    return 2 * idx + 1 <= size;
+  }
+  private static boolean hasChildR(int size, int idx) {
+    return 2 * idx + 2 <= size;
+  }
+  private static int getChildL(int size, int idx) {
+    return 2 * idx + 1;
+  }
+  private static int getChildR(int size, int idx) {
+    return 2 * idx + 2;
+  }
   private static void swap(int i1, int i2, int[] data) {
     int temp = data[i1];
     data[i1] = data[i2];
