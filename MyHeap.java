@@ -12,14 +12,14 @@ public class MyHeap {
     while (!done) {
       if (!hasChildL(size, index)) done = true;
       else if(!hasChildR(size, index)) {
-        if (data[getChildL(size, index)] > data[index]) {
-          swap(index, getChildL(size, index), data);
+        if (data[getChildL(index)] > data[index]) {
+          swap(index, getChildL(index), data);
         }
         else done = true;
       }
       else {
-        int leftI = getChildL(size, index);
-        int rightI = getChildR(size, index);
+        int leftI = getChildL(index);
+        int rightI = getChildR(index);
         int max = Math.max(data[leftI], data[rightI]);
         if (data[index] >= max) done = true;
         else if (max == data[leftI]) {
@@ -56,11 +56,14 @@ public class MyHeap {
   private static boolean hasChildR(int size, int idx) {
     return 2 * idx + 2 < size;
   }
-  private static int getChildL(int size, int idx) {
+  private static int getChildL(int idx) {
     return 2 * idx + 1;
   }
-  private static int getChildR(int size, int idx) {
+  private static int getChildR(int idx) {
     return 2 * idx + 2;
+  }
+  private static int getParent(int idx) {
+    return (idx - 1) / 2;
   }
   private static void swap(int i1, int i2, int[] data) {
     int temp = data[i1];
