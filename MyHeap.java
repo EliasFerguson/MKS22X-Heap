@@ -34,7 +34,18 @@ public class MyHeap {
     }
   }
   private static void pushUp(int[] data, int index) {
-
+    boolean done = false;
+    while (!done) {
+      if (index == 0) done = true;
+      else {
+        int parentI = getParent(index);
+        if (data[parentI] < data[index]) {
+          swap(parentI, index, data);
+          index = parentI;
+        }
+        else done = true;
+      }
+    }
   }
   public static void heapify(int[] data) {
    for (int i = data.length - 1; i >= 0; i--) {
