@@ -8,7 +8,29 @@ public class MyHeap {
     System.out.println(HeapPrinter.toString(data));
   }
   private static void pushDown(int[] data, int size, int index) {
-
+    boolean done = false;
+    while (!done) {
+      if (!hasChildL(size, index)) done = true;
+      else if(!hasChildR(size, index)) {
+        if (data[getChildL(size, index)] > data[index]) {
+          swap(index, getChildL(size, index), data);
+        }
+      }
+      else {
+        int leftI = getChildL(size, index);
+        int rightI = getChildR(size, index);
+        int max = Math.max(data[leftI], data[rightI]);
+        if (data[index] >= max) done = true;
+        else if (max == data[leftI]) {
+          swap(index, leftI, data);
+          index = leftI;
+        }
+        else {
+          swap(index, rightI, data);
+          index = rightI;
+        }
+      }
+    }
   }
   private static void pushUp(int[] data, int index) {
 
