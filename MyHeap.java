@@ -2,10 +2,10 @@ import java.util.*;
 import java.io.*;
 public class MyHeap {
   public static void main(String[] args) {
-    int[] data = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-    System.out.println(HeapPrinter.toString(data));
-    heapify(data);
-    System.out.println(HeapPrinter.toString(data));
+    int[] data = {2, 12, 23, 5, 2, 1, 6, 7, 100, 1};
+    System.out.println(Arrays.toString(data));
+    heapsort(data);
+    System.out.println(Arrays.toString(data));
   }
   private static void pushDown(int[] data, int size, int index) {
     boolean done = false;
@@ -42,7 +42,13 @@ public class MyHeap {
     }
   }
   public static void heapsort(int[] data) {
-
+    heapify(data);
+    int size = data.length - 1;
+    while (size > 0) {
+      swap(0, size, data);
+      size--;
+      pushDown(data, size, 0);
+    }
   }
   private static boolean hasChildL(int size, int idx) {
     return 2 * idx + 1 < size;
