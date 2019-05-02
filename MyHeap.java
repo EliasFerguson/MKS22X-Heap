@@ -15,6 +15,7 @@ public class MyHeap {
         if (data[getChildL(size, index)] > data[index]) {
           swap(index, getChildL(size, index), data);
         }
+        else done = true;
       }
       else {
         int leftI = getChildL(size, index);
@@ -36,19 +37,18 @@ public class MyHeap {
 
   }
   public static void heapify(int[] data) {
-    int start = (data.length - 2)/2;
-   for (int i = start; i >= 0; i--) {
-     pushDown(data, data.length - 1, i);
+   for (int i = data.length - 1; i >= 0; i--) {
+     pushDown(data, data.length, i);
     }
   }
   public static void heapsort(int[] data) {
 
   }
   private static boolean hasChildL(int size, int idx) {
-    return 2 * idx + 1 <= size;
+    return 2 * idx + 1 < size;
   }
   private static boolean hasChildR(int size, int idx) {
-    return 2 * idx + 2 <= size;
+    return 2 * idx + 2 < size;
   }
   private static int getChildL(int size, int idx) {
     return 2 * idx + 1;
